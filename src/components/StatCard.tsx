@@ -1,16 +1,18 @@
 interface Props {
-  label: string
-  value: number
-  accent: string
+    label: string
+    value: string | number
+    accent: string
+    sub?: string
 }
 
-export default function StatCard({ label, value, accent }: Props) {
-  return (
-    <div className={`bg-white rounded-lg border-l-4 ${accent} shadow-sm p-4`}>
-      <p className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-1">
-        {label}
-      </p>
-      <p className="text-3xl font-bold text-gray-800">{value}</p>
-    </div>
-  )
+export default function StatCard({ label, value, accent, sub }: Props) {
+    return (
+        <div className="bg-surface rounded-lg border border-border p-4 flex flex-col gap-1">
+            <p className="text-[10px] font-bold text-muted uppercase tracking-widest">
+                {label}
+            </p>
+            <p className={`text-3xl font-bold ${accent}`}>{value}</p>
+            {sub && <p className="text-[10px] text-muted">{sub}</p>}
+        </div>
+    )
 }
